@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.weather-body {
+  width: 600px;
+}
+input {
+  margin-top: 40px;
+  padding: 20px;
+  width: 40%;
+  border: none;
+  border-radius: 30px 0 0px 30px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: #000;
+}
+button {
+  padding: 20px;
+  border: none;
+  border-radius: 0 30px 30px 0;
+}
+.header {
+  display: flex;
+  align-items: center;
+}
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
