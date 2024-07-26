@@ -6,6 +6,7 @@ import humidityIcon from "./Assets/humidity.png";
 import rainIcon from "./Assets/rain.png";
 import snowIcon from "./Assets/snow.png";
 import windIcon from "./Assets/wind.png";
+import hazeIcon from "./Assets/mist.png";
 
 import { useState, useEffect } from "react";
 import search from "./Assets/search.svg";
@@ -34,6 +35,8 @@ export const Weather = () => {
     "11d": thunderstormIcon,
     "13d": snowIcon,
     "13n": snowIcon,
+    "50n":hazeIcon,
+    "50d":hazeIcon
   };
   const fetchData = async () => {
     setLoading(true);
@@ -68,7 +71,8 @@ export const Weather = () => {
           placeholder="Search City..."
         />
         <button onClick={fetchData}>
-          <img src={search} alt="" />{" "}
+          <img src={search} alt="" className="" />
+          
         </button>
       </div>
       {/* Loading and Error message */}
@@ -78,9 +82,29 @@ export const Weather = () => {
       </div>
       {data && (
         <div className="weather-info">
-          <img src={data?.icon} alt="icons" height={"200px"} />
-          <h1>{(data.main.temp - 273.15).toFixed(0)}⁰C </h1>
-{/* <h1>{data.} </h1> */}
+          <img src={data?.icon} alt="icons" height={"150px"} />
+          <h2>{(data.main.temp - 273.15).toFixed(0)}⁰C </h2>
+          <h3>{data.name} </h3>
+
+          <div className="details">
+            <div className="detail-card">
+              <img src={humidityIcon} alt="" />
+              <span className="detail-item">
+                <span>{data.main.humidity} % </span>
+                <p>Humidity</p>
+              </span>
+            </div>
+
+            <div className="detail-card">
+              <img src={windIcon} alt="" />
+              <span className="detail-item">
+                <span className="p-one">
+                  {Math.floor(data.wind.speed)} km/h
+                </span>
+                <p>Wind Speed</p>
+              </span>
+            </div>
+          </div>
         </div>
       )}
     </div>
